@@ -5,23 +5,21 @@
                 <img :src=" 'https://robotrush.ru/fortest/'+productImage">
             </div>
             <div class="product-card__item-name">
-                <span>{{ productName }}</span>
+                <span class="product-card__item-name--name">{{ productName }}</span>
+                <span class="product-card__item-name--delete" @click="REMOVE_ITEM( productIndex )">удалить</span>
             </div>
             <div class="product-card__item-price">
                 <span>Цена {{ productPrice }} р</span>
             </div>
             <div class="product-card__item-options">
                 <div class="product-card__item-options--counter">
-                  в корзине: {{ productCount }}
+                  в корзине: {{ productCount }} шт
                 </div>
                 <div @click="DECREMENT_ITEM( productIndex )" class="product-card__item-options--decrement">
                    <span>-</span>
                 </div>
                 <div @click="INCREMENT_ITEM( productIndex )" class="product-card__item-options--increment">
                     <span>+</span>
-                </div>
-                <div @click="REMOVE_ITEM( productIndex )" class="product-card__item-options--delete">
-                   <span>удалить</span>
                 </div>
             </div>
         </div>
@@ -54,7 +52,7 @@ export default class ProductInCard extends Vue {
         flex 1 0 auto
         display flex
     .product-card__item-image
-        width 140px
+        width 120px
         max-width 30%
         max-height 100%
         position relative
@@ -65,32 +63,47 @@ export default class ProductInCard extends Vue {
           width auto
           max-width auto
     .product-card__item-name
-        text-align center
+        text-align left
         width 30%
         flex 1 0 auto
         display flex
+        flex-wrap wrap
+        align-content center
         box-sizing border-box
-        padding 0px 40px
+        padding 0px 20px
         border-right 1px solid #f1f1f1
         margin 0px
-        & span
-            margin auto
-            padding 0px
-            font-weight bold
-            flex 1 0 auto
+    .product-card__item-name--name
+        margin 0px auto 5px
+        padding 0px
+        font-size 14px
+        font-weight bold
+        flex 1 0 auto
+    .product-card__item-name--delete
+        width auto
+        font-size 12px
+        cursor pointer
+        font-weight normal
+        border-top 1px solid #f1f1f1
+        padding 5px 0px 0px 5px
+        color #777
+        margin 0px
     .product-card__item-price
         width 15%
         flex 1 0 auto
         text-align center
-        font-size 14px
-        color #784fa1
         box-sizing border-box
         padding 0px 20px
         margin 0px
         display flex
+        flex-wrap wrap
+        align-content center
         border-right 1px solid #f1f1f1
     & span
         margin auto
+        width 100%
+        font-size 14px
+        color #784fa1
         font-weight bold
         flex 1 0 auto
     .product-card__item-options
@@ -102,8 +115,9 @@ export default class ProductInCard extends Vue {
         align-self center
     .product-card__item-options--counter
         width 100%
-        font-weight bold
-        margin 0px 0px 10px
+        font-size 12px
+        font-weight normal
+        margin 10px 0px 15px
     .product-card__item-options--decrement,
     .product-card__item-options--increment
         width 50%
@@ -111,7 +125,7 @@ export default class ProductInCard extends Vue {
         text-align center
         display flex
         & span
-            cursor: pointer
+            cursor pointer
             width 30px
             max-width 30px
             height 30px
@@ -125,19 +139,10 @@ export default class ProductInCard extends Vue {
                 background #ccc
     .product-card__item-options--decrement span
         aligh-self flex-end
-        margin 0px 5px 0px auto
+        margin 0px 12px 0px auto
     .product-card__item-options--increment span
         aligh-self flex-start
-        margin 0px auto 0px 5px
-    .product-card__item-options--delete
-        width 100%
-        font-size 12px
-        & span
-            cursor pointer
-            color #555
-            transition .25s
-        & :hover
-            color orangered
+        margin 0px auto 0px 12px
     .fade-enter-active, .fade-leave-active
         transition opacity .5s;
     .fade-enter, .fade-leave-to

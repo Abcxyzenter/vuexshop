@@ -16,7 +16,7 @@ export default class CardInMenu extends Vue {}
     position relative
     & span
         position absolute
-        top 15px
+        top 10px
         right -25px
         width 20px
         height 20px

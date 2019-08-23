@@ -2,8 +2,8 @@
   <div id="app">
     <div class="nav--wrapper">
       <div class="nav">
-        <router-link to="/">магазин</router-link>
-        <router-link to="/card"><CardInMenu/></router-link>
+        <router-link to="/" append>магазин</router-link>
+        <router-link to="/card" append><CardInMenu/></router-link>
       </div>
     </div>
     <div class="content">
@@ -37,15 +37,16 @@ export default class App extends Vue {}
   position fixed
   left 0px
   top 0px
-  height 50px
+  height 60px
   background #fff
-  box-shadow 0px 0px 3px #333
+  box-shadow 0px 0px 12px #ccc
+  z-index 9
 .nav
   display flex
   width 100%
   max-width 1279px
   justify-content space-around
-  height 50px
+  height 60px
   margin 0px auto
   align-content center
   a
@@ -54,13 +55,13 @@ export default class App extends Vue {}
     text-decoration none
     margin 0px auto
     height 100%
-    line-height 50px
+    line-height 60px
     &.router-link-exact-active
-      color #a86ee0
+      color #784fa1
 
 .content
   max-width 1279px
   width 100%
-  margin 70px auto 0px
-
+  margin 100px auto
+  height 100%
 </style>
